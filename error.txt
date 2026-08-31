@@ -1,0 +1,47 @@
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/flalipe/.pyenv/versions/3.10.19/lib/python3.10/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/home/flalipe/.pyenv/versions/3.10.19/lib/python3.10/multiprocessing/pool.py", line 51, in starmapstar
+    return list(itertools.starmap(args[0], args[1]))
+  File "/home/flalipe/Projects/Airob/Search.py", line 64, in evaluate
+    return matteoevaluate(robot, world, sim_step)
+  File "/home/flalipe/Projects/Airob/robot/matteobot.py", line 59, in evaluate
+    env = robot_simulator._get_env_mode_env(bot, robot, type_env)
+  File "/home/flalipe/Projects/Airob/robot/robot_simulator.py", line 13, in _get_env_mode_env
+    env = gym.make(env_name, body = robot, connections = connections)
+  File "/home/flalipe/Projects/Airob/.venv/lib/python3.10/site-packages/gymnasium/envs/registration.py", line 734, in make
+    env = env_creator(**env_spec_kwargs)
+  File "/home/flalipe/Projects/Airob/.venv/lib/python3.10/site-packages/evogym/envs/walk.py", line 101, in __init__
+    BenchmarkBase.__init__(self, world=self.world, render_mode=render_mode, render_options=render_options)
+  File "/home/flalipe/Projects/Airob/.venv/lib/python3.10/site-packages/evogym/envs/base.py", line 393, in __init__
+    EvoGymBase.__init__(self, world=world, render_mode=render_mode, render_options=render_options)
+  File "/home/flalipe/Projects/Airob/.venv/lib/python3.10/site-packages/evogym/envs/base.py", line 36, in __init__
+    self._sim = EvoSim(world)
+  File "/home/flalipe/Projects/Airob/.venv/lib/python3.10/site-packages/evogym/sim.py", line 39, in __init__
+    self._init_world_items(world)
+  File "/home/flalipe/Projects/Airob/.venv/lib/python3.10/site-packages/evogym/sim.py", line 88, in _init_world_items
+    self.read_robot_from_array(structure, connections_numpy, obj.name,
+IndexError: vector<bool>::_M_range_check: __n (which is 18446744073709551615) >= this->size() (which is 25)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/flalipe/.pyenv/versions/3.10.19/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/flalipe/.pyenv/versions/3.10.19/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/flalipe/Projects/Airob/main.py", line 133, in <module>
+    main(**params)
+  File "/home/flalipe/Projects/Airob/main.py", line 89, in main
+    generator.update()
+  File "/home/flalipe/Projects/Airob/Generators/cga.py", line 211, in update
+    scores = p.starmap(Search.evaluate, evalpars)
+  File "/home/flalipe/.pyenv/versions/3.10.19/lib/python3.10/multiprocessing/pool.py", line 375, in starmap
+    return self._map_async(func, iterable, starmapstar, chunksize).get()
+  File "/home/flalipe/.pyenv/versions/3.10.19/lib/python3.10/multiprocessing/pool.py", line 774, in get
+    raise self._value
+IndexError: vector<bool>::_M_range_check: __n (which is 18446744073709551615) >= this->size() (which is 25)
+
